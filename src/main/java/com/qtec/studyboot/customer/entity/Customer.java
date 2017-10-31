@@ -11,22 +11,67 @@ public class Customer implements Serializable {
      * 会员Id
      */
     private Long id;
-    //会员名
+    /**
+     * 会员名
+     */
     private String cusName;
-    //会员登录名
+    /**
+     * 会员登录名
+     */
     private String loginName;
-    //会员性别 1：男  2：女
+    /**
+     * 会员性别 1：男  2：女
+     */
     private int sex;
-    //会员电话
+    /**
+     * 会员电话
+     */
     private String  telPhone;
-    //会员注册地址
+    /**
+     * 会员注册地址
+     */
     private String address;
-    //会员账户注册时间
+    /**
+     * 会员账户注册时间
+     */
     private Date regisDate;
-    //会员信息更新时间
+
+    /**
+     * 会员信息更新时间
+     */
     private Date updateDate;
-    //会员信息更新人
+
+    /**
+     *  会员信息更新人
+     */
     private String updateName;
+
+    /**
+     * 会员等级
+     *
+     */
+    private int level;
+    /**
+     * 账户类型
+     */
+    private int accountType;
+
+
+    public int getLevel() {
+        return level;
+    }
+
+    public void setLevel(int level) {
+        this.level = level;
+    }
+
+    public int getAccountType() {
+        return accountType;
+    }
+
+    public void setAccountType(int accountType) {
+        this.accountType = accountType;
+    }
 
     public String getUpdateName() {
         return updateName;
@@ -98,5 +143,53 @@ public class Customer implements Serializable {
 
     public void setUpdateDate(Date updateDate) {
         this.updateDate = updateDate;
+    }
+
+    /**
+     * 校验唯一
+     *  cusName  loginName  telPhone   accountType  address
+     * @param
+     * @return
+     */
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Customer customer = (Customer) o;
+
+        if (accountType != customer.accountType) return false;
+        if (cusName != null ? !cusName.equals(customer.cusName) : customer.cusName != null) return false;
+        if (loginName != null ? !loginName.equals(customer.loginName) : customer.loginName != null) return false;
+        if (telPhone != null ? !telPhone.equals(customer.telPhone) : customer.telPhone != null) return false;
+        return address != null ? address.equals(customer.address) : customer.address == null;
+    }
+
+    @Override
+    public int hashCode() {
+        int result = cusName != null ? cusName.hashCode() : 0;
+        result = 31 * result + (loginName != null ? loginName.hashCode() : 0);
+        result = 31 * result + (telPhone != null ? telPhone.hashCode() : 0);
+        result = 31 * result + (address != null ? address.hashCode() : 0);
+        result = 31 * result + accountType;
+        return result;
+    }
+
+    @Override
+    public String toString() {
+        return "Customer{" +
+                "id=" + id +
+                ", cusName='" + cusName + '\'' +
+                ", loginName='" + loginName + '\'' +
+                ", sex=" + sex +
+                ", telPhone='" + telPhone + '\'' +
+                ", address='" + address + '\'' +
+                ", regisDate=" + regisDate +
+                ", updateDate=" + updateDate +
+                ", updateName='" + updateName + '\'' +
+                ", level=" + level +
+                ", accountType=" + accountType +
+                '}';
     }
 }

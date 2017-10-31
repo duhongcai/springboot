@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>会员列表</title>
+    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}"/>
+</head>
+<body class="container">
+<br/>
+<h1>会员列表</h1>
+<br/><br/>
+<div class="width:80%">
+    <table class="table table-hover">
+        <thead>
+        <tr>
+            <th>会员Id</th>
+            <th>会员名称</th>
+            <th>会员登录名</th>
+            <th>地址</th>
+            <th>等级</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="customer:${customers}">
+            <th scope="row" th:text="${customer.id}">1</th>
+            <th th:text="${customer.cusName}">neo</th>
+            <th th:text="${customer.loginName}">0tto</th>
+            <th th:text="${customer.address}">6</th>
+            <th th:text="${customer.level}">4</th>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>
