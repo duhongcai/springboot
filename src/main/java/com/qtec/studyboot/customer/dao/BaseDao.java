@@ -14,7 +14,7 @@ public interface BaseDao<T> {
      */
     int insert(T t);
 
-    boolean batchInsert(List<T> batch);
+    int batchInsert(List<T> batch);
 
     /**
      * 通用查询
@@ -30,7 +30,7 @@ public interface BaseDao<T> {
      * @param id
      * @return
      */
-    boolean deletOneById(int id);
+    int deletOneById(int id);
 
     /**
      * 更新
@@ -39,5 +39,5 @@ public interface BaseDao<T> {
      * @param t
      * @return
      */
-    boolean updateById(int id, T t);
+    int updateById(int id, T t);
 }

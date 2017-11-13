@@ -26,7 +26,7 @@
         FROM customer
     </select>
 
-    <!--?? customer需要时全限定类名吗 -->
+    <!--?? customer需要时全限定类名吗 不需要：配置文件中已经配置 -->
     <insert id ="insert" useGeneratedKeys="true" keyProperty="id"  parameterType="Customer">
       INSERT INTO customer
       <trim prefix="(" suffix=")" suffixOverrides=",">
@@ -93,5 +93,16 @@
                 #{accountType},
             </if>
       </trim>
+    </insert>
+
+    <!-- 批量添加用户 -->
+    <insert id="batchInsert" parameterType="List" useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO customer(cus_name,login_name,sex,tel_phone,address,regis_date,update_date,update_name,level,accountType) VALUES
+        <foreach collection="list" item="customer" separator=",">
+            (
+            #{customer.cusName},#{customer.loginName},#{customer.sex},#{customer.telPhone},#{customer.address},
+            #{customer.regisDate},#{customer.updateDate},#{customer.updateName},#{customer.level},#{customer.accountType}
+            )
+        </foreach>
     </insert>
 </mapper>

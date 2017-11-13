@@ -8,9 +8,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import java.util.ArrayList;
 import java.util.Date;
-
-import static org.junit.Assert.*;
+import java.util.List;
 
 /**
  * Created by duhc on 2017/11/13.
@@ -23,13 +23,20 @@ public class CustomerServiceImplTest {
     CustomerService customerService;
 
     @Test
-    public void addCus(){
-        Customer customer = new Customer();
-        customer.setLoginName("duhc");
-        customer.setCusName("duhcr");
-        customer.setLevel(2);
-        customer.setRegisDate(new Date());
-        customerService.registCus(customer);
+    public void addCus() {
+        List<Customer> customers = new ArrayList<>();
+        Customer customer;
+        for (int i = 0; i < 10; i++) {
+            customer =  new Customer();
+            customer.setLoginName("duhc"+i);
+            customer.setCusName("duhcr"+i);
+            customer.setLevel(i);
+            customer.setRegisDate(new Date());
+            customers.add(customer);
+        }
+        int i = customerService.batchInsert(customers);
+        System.out.println(i);
+        System.out.println(customers);
     }
 
 }

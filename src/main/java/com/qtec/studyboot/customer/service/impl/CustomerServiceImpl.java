@@ -37,4 +37,9 @@ public class CustomerServiceImpl implements CustomerService{
     public int registCus(Customer customer) {
         return customerDao.insert(customer);
     }
+
+    @Override
+    public int batchInsert(List<Customer> customers) {
+        return customerDao.batchInsert(customers);
+    }
 }
