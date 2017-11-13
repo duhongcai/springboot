@@ -13,7 +13,7 @@
         <result property="updateDate" column="update_date"/>
         <result property="updateName" column="update_name"/>
         <result property="level" column="level"/>
-        <result property="account" column="account"/>
+        <result property="accountType" column="accountType"/>
     </resultMap>
     <sql id="Customer_Base_Column">
         id,cus_name,login_name,sex,tel_phone,
@@ -27,7 +27,71 @@
     </select>
 
     <!--?? customer需要时全限定类名吗 -->
-    <!--<insert id ="registCustomer" useGeneratedKeys="true" keyProperty="id"  parameterType="Customer">-->
-      <!--INSERT INTO customer-->
-    <!--</insert>-->
+    <insert id ="insert" useGeneratedKeys="true" keyProperty="id"  parameterType="Customer">
+      INSERT INTO customer
+      <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="cusName!=null">
+              cus_name,
+            </if>
+          <if test="loginName!=null">
+              login_name,
+          </if>
+          <if test="sex!=null">
+              sex,
+          </if>
+          <if test="telPhone!=null">
+              tel_phone,
+          </if>
+          <if test="address!=null">
+              address,
+          </if>
+          <if test="regisDate!=null">
+              regis_date,
+          </if>
+          <if test="updateDate!=null">
+              update_date,
+          </if>
+          <if test="updateName!=null">
+              update_name,
+          </if>
+          <if test="level!=null">
+              level,
+          </if>
+          <if test="accountType!=null">
+              accountType,
+          </if>
+      </trim>
+        <trim prefix="value(" suffix=")" suffixOverrides=",">
+            <if test="cusName!=null">
+                #{cusName},
+            </if>
+            <if test="loginName!=null">
+                #{loginName},
+            </if>
+            <if test="sex!=null">
+                #{sex},
+            </if>
+            <if test="telPhone!=null">
+                #{telPhone},
+            </if>
+            <if test="address!=null">
+                #{address},
+            </if>
+            <if test="regisDate!=null">
+                #{regisDate},
+            </if>
+            <if test="updateDate!=null">
+                #{updateDate},
+            </if>
+            <if test="updateName!=null">
+                #{updateName},
+            </if>
+            <if test="level!=null">
+                #{level},
+            </if>
+            <if test="accountType!=null">
+                #{accountType},
+            </if>
+      </trim>
+    </insert>
 </mapper>

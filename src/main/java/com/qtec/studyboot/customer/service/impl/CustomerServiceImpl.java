@@ -32,4 +32,9 @@ public class CustomerServiceImpl implements CustomerService{
 //        }
         return customers;
     }
+
+    @Override
+    public int registCus(Customer customer) {
+        return customerDao.insert(customer);
+    }
 }
