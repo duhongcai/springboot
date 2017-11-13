@@ -5,6 +5,7 @@ import java.util.List;
 /**
  * Created by duhc on 2017/10/30.
  */
+
 public interface BaseDao<T> {
     /**
      * 通用增加

@@ -2,30 +2,32 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.qtec.studyboot.customer.dao.CustomerDao">
-    <resultMap id="CustomerResult" type="com.qtec.studyboot.customer.entity.Customer">
-        <id property="" column=""/>
-        <result property="" column=""/>
-        <result property="" column=""/>
-        <result property="" column=""/>
-        <result property="" column=""/>
-        <result property="" column=""/>
-        <result property="" column=""/>
-        <result property="" column=""/>
-        <result property="" column=""/>
-        <result property="" column=""/>
-        <result property="" column=""/>
+    <resultMap id="CustomerResultMap" type="com.qtec.studyboot.customer.entity.Customer">
+        <id property="id" column="id"/>
+        <result property="cusName" column="cus_name"/>
+        <result property="loginName" column="login_name"/>
+        <result property="sex" column="sex"/>
+        <result property="telPhone" column="tel_phone"/>
+        <result property="address" column="address"/>
+        <result property="regisDate" column="regis_date"/>
+        <result property="updateDate" column="update_date"/>
+        <result property="updateName" column="update_name"/>
+        <result property="level" column="level"/>
+        <result property="account" column="account"/>
     </resultMap>
     <sql id="Customer_Base_Column">
-        
+        id,cus_name,login_name,sex,tel_phone,
+        address,regis_date,update_date,update_name,
+        level,accountType
     </sql>
-    <select id="getCustomer">
+    <select id="getCustomer" resultMap="CustomerResultMap">
         SELECT 
         <include refid="Customer_Base_Column"/>
         FROM customer
     </select>
 
     <!--?? customer需要时全限定类名吗 -->
-    <insert id ="registCustomer" useGeneratedKeys="true" keyProperty="id"  parameterType="Customer">
-      INSERT INTO customer
-    </insert>
+    <!--<insert id ="registCustomer" useGeneratedKeys="true" keyProperty="id"  parameterType="Customer">-->
+      <!--INSERT INTO customer-->
+    <!--</insert>-->
 </mapper>
