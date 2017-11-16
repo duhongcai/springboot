@@ -14,7 +14,7 @@ public class Customer implements Serializable {
     /**
      * 会员名
      */
-    private String cusName;
+    private byte[] cusName;
     /**
      * 会员登录名
      */
@@ -89,11 +89,11 @@ public class Customer implements Serializable {
         this.id = id;
     }
 
-    public String getCusName() {
+    public byte[] getCusName() {
         return cusName;
     }
 
-    public void setCusName(String cusName) {
+    public void setCusName(byte[] cusName) {
         this.cusName = cusName;
     }
 

@@ -1,10 +1,26 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
+    <meta charset="UTF-8"/>
     <title>会员登录</title>
 </head>
 <body>
-
+<form action="#" th:action="@{/login}" th:object="${cusForm}" method="post">
+    <table>
+        <tr>
+            <td>登录名：</td>
+            <td><input type="text" th:field="*{loginName}"/></td>
+            <td th:if="${#fields.hasErrors('loginName')}" th:errors="*{loginName}">登录名不规范</td>
+        </tr>
+        <tr>
+            <td>登录密码：</td>
+            <td><input type="password" th:field="*{password}"/></td>
+            <td th:if="${#fields.hasErrors('password')}" th:errors="*{password}">密码不规范</td>
+        </tr>
+        <tr>
+            <td><button type="submit">提交</button></td>
+        </tr>
+    </table>
+</form>
 </body>
 </html>
