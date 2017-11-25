@@ -27,8 +27,9 @@ public class CustomerManagerController {
     @RequestMapping("/")
     public String index() {
         logger.info("跳转到index页面");
-        return "redirect:/regist";
+        return "customer/index";
     }
+
 
     @RequestMapping(value = "/regist",method = RequestMethod.GET)
     public String login(CusForm cusForm){

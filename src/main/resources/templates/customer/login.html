@@ -2,9 +2,25 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8"/>
-    <title>会员注册</title>
+    <title>会员登录</title>
 </head>
 <body>
-
+    <div style="margin: 400px 700px">
+        <form method="post" href="login">
+           <div>
+               登录名：
+               <input name="loginName" id="loginName" type="text"/>
+           </div>
+            <br/>
+            <div>
+                密   码：
+                <input name="password" id="password" type="password"/>
+            </div>
+            <br/>
+            <div style="margin-left: 50px">
+                <input type="submit" id="bnt" value="登录"/>
+            </div>
+        </form>
+    </div>
 </body>
 </html>

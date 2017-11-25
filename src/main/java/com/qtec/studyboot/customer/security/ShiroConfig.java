@@ -1,7 +1,6 @@
 package com.qtec.studyboot.customer.security;
 
 import com.qtec.studyboot.customer.security.realm.ShiroRealm;
-import org.apache.shiro.mgt.DefaultSecurityManager;
 import org.apache.shiro.mgt.SecurityManager;
 import org.apache.shiro.spring.web.ShiroFilterFactoryBean;
 import org.apache.shiro.web.mgt.DefaultWebSecurityManager;
@@ -17,18 +16,18 @@ import java.util.Map;
 @Configuration
 public class ShiroConfig {
     @Bean
-    public ShiroFilterFactoryBean shiroFilter(SecurityManager securityManager){
+    public ShiroFilterFactoryBean shiroFilter(SecurityManager securityManager) {
         ShiroFilterFactoryBean factoryBean = new ShiroFilterFactoryBean();
         factoryBean.setSecurityManager(securityManager);
         //拦截器
-        Map<String,String> filterCharinDefinitionMap = new LinkedHashMap<>();
+        Map<String, String> filterCharinDefinitionMap = new LinkedHashMap<>();
         //首先配置不需要拦截的路径 执行逻辑是先匹配上面的，
         // 如果上面的匹配就按照当前，不再往下寻找
-        filterCharinDefinitionMap.put("/static/**","anon");
+        filterCharinDefinitionMap.put("/static/**", "anon");
         //配置登出的处理方式
-        filterCharinDefinitionMap.put("/logout","logout");
+        filterCharinDefinitionMap.put("/logout", "logout");
         //范围最大的要放在最下面
-        filterCharinDefinitionMap.put("/**","authc");
+        filterCharinDefinitionMap.put("/**", "authc");
         //设置处理逻辑生效
         factoryBean.setLoginUrl("/login");
         factoryBean.setSuccessUrl("/index");
@@ -38,14 +37,14 @@ public class ShiroConfig {
     }
 
     @Bean
-    public SecurityManager securityManager(){
+    public SecurityManager securityManager() {
         DefaultWebSecurityManager securityManager = new DefaultWebSecurityManager();
         securityManager.setRealm(shiroRealm());
         return securityManager;
     }
 
     @Bean
-    public ShiroRealm shiroRealm(){
+    public ShiroRealm shiroRealm() {
         ShiroRealm shiroRealm = new ShiroRealm();
         return shiroRealm;
     }

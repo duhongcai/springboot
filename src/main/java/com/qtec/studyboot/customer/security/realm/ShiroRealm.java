@@ -31,7 +31,11 @@ public class ShiroRealm extends AuthorizingRealm{
         //获取用户名
         String cusName = (String) token.getPrincipal();
         //从数据源获取该用户相关数据
-        Customer customer = customerService.getCustomerByName(cusName);
+       // Customer customer = customerService.getCustomerByName(cusName);
+        Customer customer = new Customer();
+        customer.setCusName("duhc");
+        customer.setLoginName("duhc");
+        customer.setPassword("11032320");
         if (customer == null){
             throw  new AuthenticationException("该用户不存在");
         }
