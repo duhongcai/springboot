@@ -1,10 +1,11 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
+    <meta charset="UTF-8"/>
     <title>404</title>
 </head>
 <body>
-        Error Page
+        灰常抱歉，后台发生异常，错误信息：<span th:text="${errorMessage}"/>
+
 </body>
 </html>

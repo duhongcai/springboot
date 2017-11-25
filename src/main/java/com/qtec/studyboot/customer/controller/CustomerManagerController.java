@@ -27,21 +27,23 @@ public class CustomerManagerController {
     @RequestMapping("/")
     public String index() {
         logger.info("跳转到index页面");
-        return "redirect:/login";
+        return "redirect:/regist";
     }
 
-    @RequestMapping(value = "/login",method = RequestMethod.GET)
+    @RequestMapping(value = "/regist",method = RequestMethod.GET)
     public String login(CusForm cusForm){
-        return "customer/login";
+        System.out.println("运行到这里1");
+        return "customer/regist";
     }
 
-    @RequestMapping(value = "/login",method = RequestMethod.POST)
-    public String login(@Valid CusForm cusForm, BindingResult bindingResult){
+    @RequestMapping(value = "/regist",method = RequestMethod.POST)
+    public String regist(@Valid CusForm cusForm, BindingResult bindingResult,Model model){
+        System.out.println("运行到这里2");
         if (bindingResult.hasErrors()){
-            return "customer/login";
+            return "customer/regist";
         }
-
-        return "customer/persion";
+        model.addAttribute("cusForm",cusForm);
+        return "customer/person";
     }
 
     @RequestMapping(value = "/list")

@@ -34,6 +34,11 @@ public class CustomerServiceImpl implements CustomerService{
     }
 
     @Override
+    public Customer getCustomerByName(String cusName) {
+        return null;
+    }
+
+    @Override
     public int registCus(Customer customer) {
         return customerDao.insert(customer);
     }

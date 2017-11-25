@@ -9,6 +9,7 @@ import java.util.List;
  */
 public interface CustomerService {
     List<Customer> getCustomers();
+    Customer getCustomerByName(String cusName);
     int registCus(Customer customer);
     int batchInsert(List<Customer> customers);
 }

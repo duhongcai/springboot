@@ -14,11 +14,15 @@ public class Customer implements Serializable {
     /**
      * 会员名
      */
-    private byte[] cusName;
+    private String cusName;
     /**
      * 会员登录名
      */
     private String loginName;
+    /**
+     *  登录密码
+     */
+    private String password;
     /**
      * 会员性别 1：男  2：女
      */
@@ -89,12 +93,20 @@ public class Customer implements Serializable {
         this.id = id;
     }
 
-    public byte[] getCusName() {
+    public String getCusName() {
         return cusName;
     }
 
-    public void setCusName(byte[] cusName) {
+    public void setCusName(String cusName) {
         this.cusName = cusName;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     public String getLoginName() {
