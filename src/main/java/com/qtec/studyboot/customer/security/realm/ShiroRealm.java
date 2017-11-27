@@ -21,7 +21,7 @@ public class ShiroRealm extends AuthorizingRealm{
     CustomerService customerService;
 
     /**
-     * 登录验证
+     * 登录验证 需要进行权限验证时才会调用
      * @param token
      * @return
      * @throws AuthenticationException
@@ -45,18 +45,18 @@ public class ShiroRealm extends AuthorizingRealm{
     }
 
     /**
-     * 授权
+     * 授权 需要进行权限验证时才回调用
      * @param principals
      * @return
      */
     @Override
     protected AuthorizationInfo doGetAuthorizationInfo(PrincipalCollection principals) {
+        SimpleAuthorizationInfo  info = new SimpleAuthorizationInfo();
         //获取登录对象--应该是组装用户数据的时候放进去的？？
         Customer customer = (Customer) principals.getPrimaryPrincipal();
-        SimpleAuthorizationInfo  info = new SimpleAuthorizationInfo();
-        //获取登录对象的权限信息--从数据库或者缓存
+        //TODO 获取登录对象的权限信息--从数据库或者缓存
         if (customer!=null){
-                
+            info.addRole("admin");
         }
         return info;
     }

@@ -26,12 +26,14 @@ public class ShiroConfig {
         filterCharinDefinitionMap.put("/static/**", "anon");
         //配置登出的处理方式
         filterCharinDefinitionMap.put("/logout", "logout");
+        filterCharinDefinitionMap.put("/list","roles[admin]");
         //范围最大的要放在最下面
         filterCharinDefinitionMap.put("/**", "authc");
+
         //设置处理逻辑生效
-        factoryBean.setLoginUrl("/login");
-        factoryBean.setSuccessUrl("/index");
-        factoryBean.setUnauthorizedUrl("/403");
+        factoryBean.setLoginUrl("customer/login");
+        factoryBean.setSuccessUrl("customer/index");
+        factoryBean.setUnauthorizedUrl("customer/403");
         factoryBean.setFilterChainDefinitionMap(filterCharinDefinitionMap);
         return factoryBean;
     }
