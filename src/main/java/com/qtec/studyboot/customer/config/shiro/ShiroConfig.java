@@ -1,4 +1,4 @@
-package com.qtec.studyboot.customer.security;
+package com.qtec.studyboot.customer.config.shiro;
 
 import com.qtec.studyboot.customer.security.realm.ShiroRealm;
 import org.apache.shiro.mgt.SecurityManager;
@@ -31,7 +31,8 @@ public class ShiroConfig {
         filterCharinDefinitionMap.put("/**", "authc");
 
         //设置处理逻辑生效
-        factoryBean.setLoginUrl("customer/login");
+        //TODO 为什么不能设置 login
+//        factoryBean.setLoginUrl("customer/login");
         factoryBean.setSuccessUrl("customer/index");
         factoryBean.setUnauthorizedUrl("customer/403");
         factoryBean.setFilterChainDefinitionMap(filterCharinDefinitionMap);

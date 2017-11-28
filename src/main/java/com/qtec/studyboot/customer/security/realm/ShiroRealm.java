@@ -28,9 +28,8 @@ public class ShiroRealm extends AuthorizingRealm{
      */
     @Override
     protected AuthenticationInfo doGetAuthenticationInfo(AuthenticationToken token) throws AuthenticationException {
-        //获取用户名
+        // TODO 获取用户名并根据用户名从数据源中获取用户校验信息
         String cusName = (String) token.getPrincipal();
-        //从数据源获取该用户相关数据
        // Customer customer = customerService.getCustomerByName(cusName);
         Customer customer = new Customer();
         customer.setCusName("duhc");
@@ -60,6 +59,4 @@ public class ShiroRealm extends AuthorizingRealm{
         }
         return info;
     }
-
-
 }
