@@ -24,6 +24,7 @@ public class ShiroConfig {
         //首先配置不需要拦截的路径 执行逻辑是先匹配上面的，
         // 如果上面的匹配就按照当前，不再往下寻找
         filterCharinDefinitionMap.put("/static/**", "anon");
+        filterCharinDefinitionMap.put("/captcha","anon");
         //配置登出的处理方式
         filterCharinDefinitionMap.put("/logout", "logout");
         filterCharinDefinitionMap.put("/list","roles[admin]");
