@@ -27,7 +27,7 @@ public class CustomerManagerController {
     @Autowired
     CustomerService customerService;
 
-    @RequestMapping("/")
+    @RequestMapping({"/","/index"})
     public String index() {
         logger.info("跳转到index页面");
         return "customer/index";
