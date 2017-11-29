@@ -27,6 +27,7 @@ public class ShiroConfig {
         filterCharinDefinitionMap.put("/css/**", "anon");
         filterCharinDefinitionMap.put("/captcha","anon");
         filterCharinDefinitionMap.put("/favicon.ico","anon");
+        filterCharinDefinitionMap.put("/register","anon");
         //配置登出的处理方式
         filterCharinDefinitionMap.put("/logout", "logout");
         filterCharinDefinitionMap.put("/list","roles[admin]");
