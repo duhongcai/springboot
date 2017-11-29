@@ -23,8 +23,10 @@ public class ShiroConfig {
         Map<String, String> filterCharinDefinitionMap = new LinkedHashMap<>();
         //首先配置不需要拦截的路径 执行逻辑是先匹配上面的，
         // 如果上面的匹配就按照当前，不再往下寻找
-        filterCharinDefinitionMap.put("/static/**", "anon");
+        filterCharinDefinitionMap.put("/js/**", "anon");
+        filterCharinDefinitionMap.put("/css/**", "anon");
         filterCharinDefinitionMap.put("/captcha","anon");
+        filterCharinDefinitionMap.put("/favicon.ico","anon");
         //配置登出的处理方式
         filterCharinDefinitionMap.put("/logout", "logout");
         filterCharinDefinitionMap.put("/list","roles[admin]");
@@ -32,10 +34,9 @@ public class ShiroConfig {
         filterCharinDefinitionMap.put("/**", "authc");
 
         //设置处理逻辑生效
-        //TODO 为什么不能设置 login
-//        factoryBean.setLoginUrl("customer/login");
-        factoryBean.setSuccessUrl("customer/index");
-        factoryBean.setUnauthorizedUrl("customer/403");
+        factoryBean.setLoginUrl("/login");
+        factoryBean.setSuccessUrl("/customer/index");
+        factoryBean.setUnauthorizedUrl("/customer/403");
         factoryBean.setFilterChainDefinitionMap(filterCharinDefinitionMap);
         return factoryBean;
     }

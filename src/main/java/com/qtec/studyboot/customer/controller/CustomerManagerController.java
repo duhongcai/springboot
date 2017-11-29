@@ -3,7 +3,6 @@ package com.qtec.studyboot.customer.controller;
 import com.qtec.studyboot.customer.dto.CusForm;
 import com.qtec.studyboot.customer.entity.Customer;
 import com.qtec.studyboot.customer.service.CustomerService;
-import org.apache.shiro.authz.annotation.RequiresRoles;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,7 +11,9 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 import java.util.List;
 
@@ -32,19 +33,17 @@ public class CustomerManagerController {
     }
 
 
-    @RequestMapping(value = "/regist",method = RequestMethod.GET)
-    public String login(CusForm cusForm){
-        System.out.println("运行到这里1");
-        return "customer/regist";
+    @RequestMapping(value = "/register", method = RequestMethod.GET)
+    public String login(CusForm cusForm) {
+        return "customer/register";
     }
 
-    @RequestMapping(value = "/regist",method = RequestMethod.POST)
-    public String regist(@Valid CusForm cusForm, BindingResult bindingResult,Model model){
-        System.out.println("运行到这里2");
-        if (bindingResult.hasErrors()){
-            return "customer/regist";
+    @RequestMapping(value = "/register", method = RequestMethod.POST)
+    public String register(@Valid CusForm cusForm, BindingResult bindingResult, Model model) {
+        if (bindingResult.hasErrors()) {
+            return "customer/register";
         }
-        model.addAttribute("cusForm",cusForm);
+        model.addAttribute("cusForm", cusForm);
         return "customer/person";
     }
 
@@ -52,11 +51,17 @@ public class CustomerManagerController {
     public String list(Model model) {
         List<Customer> customers = customerService.getCustomers();
         model.addAttribute("customers", customers);
-        logger.info("输出会员{}个",customers.size());
+        logger.info("输出会员{}个", customers.size());
         // 直接到resources资源文件下templates寻找响应文件
         //next 1： 热部署
         //next 2：日志
         //next 3：错误提示
         return "customer/list";
+    }
+
+    @ResponseBody
+    @RequestMapping(value = "/updateCus")
+    public Customer updateCus(HttpServletRequest request, Customer customer) {
+        return customer;
     }
 }

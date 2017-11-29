@@ -21,7 +21,7 @@ public class ShiroRealm extends AuthorizingRealm{
     CustomerService customerService;
 
     /**
-     * 登录验证 需要进行权限验证时才会调用
+     * 登录验证 需要进行权限验证时才会调用---校验密码是否相同
      * @param token
      * @return
      * @throws AuthenticationException
@@ -30,11 +30,10 @@ public class ShiroRealm extends AuthorizingRealm{
     protected AuthenticationInfo doGetAuthenticationInfo(AuthenticationToken token) throws AuthenticationException {
         // TODO 获取用户名并根据用户名从数据源中获取用户校验信息
         String loginNm = (String) token.getPrincipal();
-       // Customer customer = customerService.getCustomerByName(cusName);
         Customer customer = new Customer();
-        customer.setCusName("duhc");
+        customer.setCusName("du Sir");
         customer.setLoginName("duhc");
-        customer.setPassword("11032320");
+        customer.setPassword("123456");
         if (customer == null){
             throw  new AuthenticationException("该用户不存在");
         }
