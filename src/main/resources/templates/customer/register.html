@@ -17,22 +17,22 @@
 </div>
 <div class="container">
     <div class="register">
-        <form action="#" th:action="@{/regist}" th:object="${cusForm}" method="post">
+        <form  th:action="@{/register}"  th:object="${cusForm}" method="post">
             <div class="register-box">
                 <div class="box default">
                     <label for="loginName">用户名</label>
-                    <input type="text" id="loginName" placeholder="您的登录名" th:field="*{loginName}"/>
+                    <input type="text" name="loginName" id="loginName" placeholder="您的登录名" />
                     <i></i>
                 </div>
                 <div class="tip">
                     <i></i>
-                    <span th:if="${#fields.hasErrors('loginName')}" th:errors="*{loginName}"></span>
+                    <!--<span th:if="${#fields.hasErrors('loginName')}" th:errors="*{'loginName'}"></span>-->
                 </div>
             </div>
         <div class="register-box">
             <div class="box default">
                 <label for="password">设置密码</label>
-                <input id="password" type="password" placeholder="至少两种字符组合" th:field="*{password}"/>
+                <input id="password" name="password" type="password" placeholder="至少两种字符组合"/>
                 <i></i>
             </div>
             <div class="tip">
@@ -54,7 +54,7 @@
             <div class="register-box">
                 <div class="box default">
                     <label for="email">电子邮箱</label>
-                    <input  id="email" type="text" th:field="*{email}" />
+                    <input  id="email"  name="email" type="text" th:field="*{email}" />
                 </div>
                 <div class="tip">
                     <i></i>
@@ -64,7 +64,7 @@
             <div class="register-box">
                 <div class="box default">
                     <label for="telPhone">手机号码</label>
-                    <input id="telPhone" type="text" th:field="*{telPhone}"/>
+                    <input id="telPhone" name="telPhone" type="text" th:field="*{telPhone}"/>
                 </div>
                 <div class="tip">
                     <i></i>

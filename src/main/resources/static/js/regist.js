@@ -39,7 +39,7 @@ window.onload = function() {
 			if(value=="") {
 				box.className = "box";
 				tip.className = "tip default";
-				span.innerHTML = "支持汉字、字母、数字、“-”“_”的组合，4-20个字符";
+				//span.innerHTML = "支持汉字、字母、数字、“-”“_”的组合，4-20个字符";
 				return false;
 			}
 		}
@@ -63,7 +63,7 @@ window.onload = function() {
 		} else {
 			box.className = "box error";
 			tip.className = "tip error";
-			span.innerHTML = "格式错误，仅支持汉字、字母、数字、“-”“_”的组合";
+			//span.innerHTML = "格式错误，仅支持汉字、字母、数字、“-”“_”的组合";
 			return false;
 		}
 	}

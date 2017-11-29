@@ -22,7 +22,14 @@ public interface BaseDao<T> {
      * @param id
      * @return
      */
-    T findOne(int id);
+    T findById(int id);
+
+    /**
+     * 通用查询 根据名字查询一个对象
+     * @param name
+     * @return
+     */
+    T findByName(String name);
 
     /**
      * 删除
@@ -34,7 +41,7 @@ public interface BaseDao<T> {
 
     /**
      * 更新
-     *
+     *       有问题 两个参数 mybatis不支持
      * @param id
      * @param t
      * @return

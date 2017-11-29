@@ -19,23 +19,16 @@ public class CustomerServiceImpl implements CustomerService{
     @Override
     public List<Customer> getCustomers() {
         List<Customer> customers = customerDao.getCustomer();
-//        Customer customer;
-//        //TODO DB
-//        for (int i = 0; i < 10; i++) {
-//            customer = new Customer();
-//            customer.setId(Long.valueOf(i+1));
-//            customer.setCusName("duhc-"+i);
-//            customer.setLoginName("ddd-"+i);
-//            customer.setAddress("浙江-杭州");
-//            customer.setLevel(1);
-//            customers.add(customer);
-//        }
         return customers;
     }
 
     @Override
     public Customer getCustomerByName(String cusName) {
-        return null;
+        Customer customer = new Customer();
+        if (cusName != null){
+             customer = customerDao.findByName(cusName);
+        }
+        return customer;
     }
 
     @Override

@@ -30,10 +30,7 @@ public class ShiroRealm extends AuthorizingRealm{
     protected AuthenticationInfo doGetAuthenticationInfo(AuthenticationToken token) throws AuthenticationException {
         // TODO 获取用户名并根据用户名从数据源中获取用户校验信息
         String loginNm = (String) token.getPrincipal();
-        Customer customer = new Customer();
-        customer.setCusName("du Sir");
-        customer.setLoginName("duhc");
-        customer.setPassword("123456");
+        Customer customer = customerService.getCustomerByName(loginNm);
         if (customer == null){
             throw  new AuthenticationException("该用户不存在");
         }

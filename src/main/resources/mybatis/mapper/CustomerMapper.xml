@@ -7,6 +7,7 @@
         <result property="cusName" column="cus_name"/>
         <result property="loginName" column="login_name"/>
         <result property="sex" column="sex"/>
+        <result property="password" column="password"/>
         <result property="telPhone" column="tel_phone"/>
         <result property="address" column="address"/>
         <result property="regisDate" column="regis_date"/>
@@ -16,10 +17,18 @@
         <result property="accountType" column="accountType"/>
     </resultMap>
     <sql id="Customer_Base_Column">
-        id,cus_name,login_name,sex,tel_phone,
+        id,cus_name,login_name,password,sex,tel_phone,
         address,regis_date,update_date,update_name,
         level,accountType
     </sql>
+    
+    <select id="findByName" resultMap="CustomerResultMap" parameterType="String">
+        SELECT 
+        <include refid="Customer_Base_Column"/>
+        FROM customer
+        where login_name = #{loginName};
+    </select>
+    
     <select id="getCustomer" resultMap="CustomerResultMap">
         SELECT 
         <include refid="Customer_Base_Column"/>
@@ -38,6 +47,9 @@
           </if>
           <if test="sex!=null">
               sex,
+          </if>
+          <if test="password!=null">
+              password,
           </if>
           <if test="telPhone!=null">
               tel_phone,
@@ -71,6 +83,9 @@
             <if test="sex!=null">
                 #{sex},
             </if>
+            <if test="password!=null">
+                #{password},
+            </if>
             <if test="telPhone!=null">
                 #{telPhone},
             </if>
@@ -97,10 +112,10 @@
 
     <!-- 批量添加用户 -->
     <insert id="batchInsert" parameterType="List" useGeneratedKeys="true" keyProperty="id">
-        INSERT INTO customer(cus_name,login_name,sex,tel_phone,address,regis_date,update_date,update_name,level,accountType) VALUES
+        INSERT INTO customer(cus_name,login_name,password,sex,tel_phone,address,regis_date,update_date,update_name,level,accountType) VALUES
         <foreach collection="list" item="customer" separator=",">
             (
-            #{customer.cusName},#{customer.loginName},#{customer.sex},#{customer.telPhone},#{customer.address},
+            #{customer.cusName},#{customer.loginName},#{customer.password},#{customer.sex},#{customer.telPhone},#{customer.address},
             #{customer.regisDate},#{customer.updateDate},#{customer.updateName},#{customer.level},#{customer.accountType}
             )
         </foreach>

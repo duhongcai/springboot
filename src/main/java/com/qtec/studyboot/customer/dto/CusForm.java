@@ -31,14 +31,6 @@ public class CusForm implements Serializable {
 //    @Length(min = 4,max = 4)
     private String veriCode;
 
-//    public String getPassword2() {
-//        return password2;
-//    }
-//
-//    public void setPassword2(String password2) {
-//        this.password2 = password2;
-//    }
-
     public String getEmail() {
         return email;
     }

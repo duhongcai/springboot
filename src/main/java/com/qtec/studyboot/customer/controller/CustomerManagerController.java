@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -43,7 +44,18 @@ public class CustomerManagerController {
         if (bindingResult.hasErrors()) {
             return "customer/register";
         }
-        model.addAttribute("cusForm", cusForm);
+        Customer customer = new Customer();
+        customer.setCusName(cusForm.getLoginName());
+        customer.setRegisDate(new Date());
+        customer.setAddress("Hangzhou Zhejiang");
+        customer.setLoginName(cusForm.getLoginName());
+        customer.setPassword(cusForm.getPassword());
+        customer.setLevel(2);
+        customer.setTelPhone(cusForm.getTelPhone());
+        customer.setAccountType(0);
+        customer.setSex(0);
+        customerService.registCus(customer);
+        model.addAttribute("customer", customer);
         return "customer/person";
     }
 

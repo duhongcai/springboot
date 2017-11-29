@@ -35,7 +35,7 @@ public class ShiroConfig {
 
         //设置处理逻辑生效
         factoryBean.setLoginUrl("/login");
-        factoryBean.setSuccessUrl("/customer/index");
+//        factoryBean.setSuccessUrl("/customer/person");
         factoryBean.setUnauthorizedUrl("/customer/403");
         factoryBean.setFilterChainDefinitionMap(filterCharinDefinitionMap);
         return factoryBean;

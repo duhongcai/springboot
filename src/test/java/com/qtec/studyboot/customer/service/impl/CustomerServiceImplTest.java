@@ -26,28 +26,12 @@ public class CustomerServiceImplTest {
     public void addCus() {
         List<Customer> customers = new ArrayList<>();
         Customer customer;
-        byte[] cus = new byte[16];
-            cus[0] = 0x11;
-            cus[1] = 0x22;
-            cus[2] = 0x55;
-            cus[3] =  0x66;
-            cus[4] = 0x77;
-            cus[5] = (byte) 0x88;
-            cus[6] = (byte) 0x99;
-            cus[7] = (byte) 0xaa;
-            cus[8] = (byte) 0xbb;
-            cus[9] = (byte) 0xcc;
-            cus[10] =(byte) 0xdd;
-            cus[11] = (byte) 0xee;
-            cus[12] = (byte) 0xff;
-            cus[13] = (byte) 0xfa;
-            cus[14] =(byte) 0xfc;
-            cus[15] = (byte) 0xfd;
         for (int i = 0; i < 5; i++) {
             customer =  new Customer();
             customer.setLoginName("duhc"+i);
             customer.setCusName("duhc");
-            customer.setLevel(i);
+            customer.setPassword("11032320");
+            customer.setLevel(0);
             customer.setRegisDate(new Date());
             customers.add(customer);
         }
@@ -58,34 +42,12 @@ public class CustomerServiceImplTest {
 
     @Test
     public void getCus(){
-        List<Customer> customers = customerService.getCustomers();
-       // for (Customer customer : customers) {
-        byte[] cus = new byte[16];
-        cus[0] = 0x11;
-        cus[1] = 0x22;
-        cus[2] = 0x55;
-        cus[3] =  0x66;
-        cus[4] = 0x77;
-        cus[5] = (byte) 0x88;
-        cus[6] = (byte) 0x99;
-        cus[7] = (byte) 0xaa;
-        cus[8] = (byte) 0xbb;
-        cus[9] = (byte) 0xcc;
-        cus[10] =(byte) 0xdd;
-        cus[11] = (byte) 0xee;
-        cus[12] = (byte) 0xff;
-        cus[13] = (byte) 0xfa;
-        cus[14] =(byte) 0xfc;
-        cus[15] = (byte) 0xfd;
-            int length = customers.get(22).getCusName().length();
-        System.out.println();
-        for (int i = 0; i < length; i++) {
-            System.out.print(cus[i]);
-        }
-        System.out.println();
+        Customer customer = customerService.getCustomerByName("duhc");
+        System.out.println(customer.getPassword());
     }
 
-    public static byte[] passCryp(byte[] passByte){
+
+    private static byte[] passCryp(byte[] passByte){
         int i=0;
         int j=0;
         //byte[] passByte =passStr.getBytes();
