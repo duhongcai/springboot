@@ -76,4 +76,13 @@ public class CustomerManagerController {
     public Customer updateCus(HttpServletRequest request, Customer customer) {
         return customer;
     }
+
+    /**
+     * 访问未授权页面
+     * @return
+     */
+    @RequestMapping("/unAuthorization")
+    public String unAuthorization(){
+        return "customer/403";
+    }
 }

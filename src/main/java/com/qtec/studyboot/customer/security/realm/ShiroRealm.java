@@ -50,7 +50,7 @@ public class ShiroRealm extends AuthorizingRealm{
         //获取登录对象--应该是组装用户数据的时候放进去的？？
         Customer customer = (Customer) principals.getPrimaryPrincipal();
         //TODO 获取登录对象的权限信息--从数据库或者缓存
-        if (customer!=null){
+        if (customer!=null && customer.getLevel() == 5){
             info.addRole("admin");
         }
         return info;

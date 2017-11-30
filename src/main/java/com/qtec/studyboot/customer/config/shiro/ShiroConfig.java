@@ -35,9 +35,10 @@ public class ShiroConfig {
         filterCharinDefinitionMap.put("/**", "authc");
 
         //设置处理逻辑生效
+        //      跳转路径 不是页面
         factoryBean.setLoginUrl("/login");
 //        factoryBean.setSuccessUrl("/customer/person");
-        factoryBean.setUnauthorizedUrl("/customer/403");
+        factoryBean.setUnauthorizedUrl("/unAuthorization");
         factoryBean.setFilterChainDefinitionMap(filterCharinDefinitionMap);
         return factoryBean;
     }

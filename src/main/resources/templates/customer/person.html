@@ -7,6 +7,10 @@
 <body>
     <span th:text="${customer.cusName}"/>，欢迎登陆
     <br/>
+    <a th:href="@{/}">index页面</a>
+    <br/>
+    <a th:href="@{/list}">查看列表</a>
+    <br/>
     <a th:href="@{/logout}">退出</a>
 </body>
 </html>
