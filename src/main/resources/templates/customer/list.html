@@ -18,6 +18,7 @@
             <th>会员登录名</th>
             <th>地址</th>
             <th>等级</th>
+            <th>操作</th>
         </tr>
         </thead>
         <tbody>
@@ -27,6 +28,16 @@
             <th th:text="${customer.loginName}">0tto</th>
             <th th:text="${customer.address}">6</th>
             <th th:text="${customer.level}">4</th>
+            <th>
+                <!--
+                TODO将cusId放在路径中 根据id进行横向以及纵向鉴权
+                -->
+                <a th:href="@{/customer/update/}+${customer.id}" href="/update">更新</a>|
+                <!--
+                使用ajax 测试ajax场景下权限不足的情形
+                -->
+                <a th:href="@{/customer/delete/}+${customer.id}" href="/update?cusId=">删除</a>
+            </th>
         </tr>
         </tbody>
     </table>

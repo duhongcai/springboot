@@ -9,12 +9,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
+import javax.websocket.server.PathParam;
 import java.util.Date;
 import java.util.List;
 
@@ -22,6 +24,7 @@ import java.util.List;
  * Created by duhc on 2017/10/30.
  */
 @Controller
+@RequestMapping(value = "/customer")
 public class CustomerManagerController {
     private static final Logger logger = LoggerFactory.getLogger(CustomerManagerController.class);
     @Autowired
@@ -72,8 +75,9 @@ public class CustomerManagerController {
     }
 
     @ResponseBody
-    @RequestMapping(value = "/updateCus")
-    public Customer updateCus(HttpServletRequest request, Customer customer) {
+    @RequestMapping(value = "/updateCus/{cusId}")
+    public Customer updateCus(HttpServletRequest request, Customer customer,@PathVariable Long cusId) {
+        logger.info("更新:"+cusId);
         return customer;
     }
 
