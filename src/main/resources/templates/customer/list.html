@@ -32,15 +32,34 @@
                 <!--
                 TODO将cusId放在路径中 根据id进行横向以及纵向鉴权
                 -->
-                <a th:href="@{/customer/update/}+${customer.id}" href="/update">更新</a>|
+                <a th:href="@{/customer/updateCus/}+${customer.id}" href="/update">更新</a>|
                 <!--
                 使用ajax 测试ajax场景下权限不足的情形
                 -->
-                <a th:href="@{/customer/delete/}+${customer.id}" href="/update?cusId=">删除</a>
+                <a id="deleteOne" href="#" th:onclick="'javascript:delOne('+${customer.id}+');'">删除</a>
+                <!--<a th:href="@{/customer/delete/}+${customer.id}" href="/update?cusId=">删除</a>-->
             </th>
         </tr>
         </tbody>
     </table>
 </div>
 </body>
+<script type="text/javascript" th:src="@{/js/jquery-1.10.2.min.js}"/>
+<script type="text/javascript">
+    function delOne(obj) {
+        $.ajax({
+            url:'/customer/delete/'+obj,
+            dataType:'json',
+            success:function (data) {
+                if (data.resCode == '0000' ){
+                    alert("删除成功");
+                }else if (data.resCode == '0001'){
+                    alert("删除失败，没有权限");
+                }else {
+                    alert("删除失败，失败原因为："+data.resMessage);
+                }
+            }
+        })
+    }
+</script>
 </html>

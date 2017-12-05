@@ -3,6 +3,8 @@ package com.qtec.studyboot.customer.controller;
 import com.qtec.studyboot.customer.dto.CusForm;
 import com.qtec.studyboot.customer.entity.Customer;
 import com.qtec.studyboot.customer.service.CustomerService;
+import org.apache.commons.collections.map.HashedMap;
+import org.apache.shiro.SecurityUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,11 +16,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import javax.naming.AuthenticationException;
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 import javax.websocket.server.PathParam;
 import java.util.Date;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created by duhc on 2017/10/30.
@@ -68,18 +72,34 @@ public class CustomerManagerController {
         model.addAttribute("customers", customers);
         logger.info("输出会员{}个", customers.size());
         // 直接到resources资源文件下templates寻找响应文件
-        //next 1： 热部署
-        //next 2：日志
-        //next 3：错误提示
         return "customer/list";
     }
 
-    @ResponseBody
+
     @RequestMapping(value = "/updateCus/{cusId}")
     public Customer updateCus(HttpServletRequest request, Customer customer,@PathVariable Long cusId) {
         logger.info("更新:"+cusId);
+
         return customer;
     }
+
+    @ResponseBody
+    @RequestMapping(value = "/delete/{cusId}")
+    public Map<String,Object> deleteCus(HttpServletRequest request,@PathVariable Long cusId){
+        Map<String ,Object> result = new HashedMap();
+        SecurityUtils.getSubject().checkRole("admin1");
+       try{
+           SecurityUtils.getSubject().checkRole("admin");
+           //TODO delete
+           result.put("resCode","0000");
+           result.put("resMes","success");
+       }catch (Exception e){
+           result.put("resCode","0001");
+           result.put("resMes","fail");
+       }
+        return result;
+    }
+
 
     /**
      * 访问未授权页面
