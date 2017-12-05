@@ -3,9 +3,14 @@
 <head>
     <meta charset="UTF-8"/>
     <title>首页</title>
+    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}"/>
 </head>
-<body>
+<body class="container" style="margin-left: 800px;margin-top: 400px">
     welcome to index page
+    <br/>
+    <span th:text="${customer.cusName}"/>，欢迎登陆
+    <br/>
+    <a th:href="@{/customer/list}">查看列表</a>
     <br/>
     <a th:href="@{/logout}">退出</a>
 </body>

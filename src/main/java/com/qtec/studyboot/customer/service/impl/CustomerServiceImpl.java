@@ -40,4 +40,9 @@ public class CustomerServiceImpl implements CustomerService{
     public int batchInsert(List<Customer> customers) {
         return customerDao.batchInsert(customers);
     }
+
+    @Override
+    public Customer getCustomerById(String cusId) {
+        return customerDao.findById(cusId);
+    }
 }

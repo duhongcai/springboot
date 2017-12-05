@@ -22,7 +22,7 @@ public interface BaseDao<T> {
      * @param id
      * @return
      */
-    T findById(int id);
+    T findById(String id);
 
     /**
      * 通用查询 根据名字查询一个对象

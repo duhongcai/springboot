@@ -48,12 +48,12 @@ public class LoginController {
            if (subject.isAuthenticated()){
                Customer customer = (Customer) subject.getPrincipal();
                model.addAttribute("customer",customer);
-               return "customer/person";
+               return "customer/index";
            }
            subject.login(token);
            Customer customer = (Customer) subject.getPrincipal();
            model.addAttribute("customer",customer);
-           return "customer/person";
+           return "customer/index";
        }catch (AuthenticationException e){
            model.addAttribute("errorMsg","用户名或者密码错误");
            return "customer/login";

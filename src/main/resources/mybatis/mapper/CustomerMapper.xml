@@ -35,6 +35,13 @@
         FROM customer
     </select>
 
+    <select id="findById" resultMap="CustomerResultMap" parameterType="String">
+        SELECT
+        <include refid="Customer_Base_Column"/>
+        FROM customer
+        WHERE id = #{cusId}
+    </select>
+
     <!--?? customer需要时全限定类名吗 不需要：配置文件中已经配置 -->
     <insert id ="insert" useGeneratedKeys="true" keyProperty="id"  parameterType="Customer">
       INSERT INTO customer

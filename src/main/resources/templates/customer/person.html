@@ -3,14 +3,55 @@
 <head>
     <meta charset="UTF-8"/>
     <title>会员信息页</title>
+    <link rel="stylesheet" th:href="@{/css/bootstrap.min.css}" />
 </head>
-<body>
-    <span th:text="${customer.cusName}"/>，欢迎登陆
-    <br/>
-    <a th:href="@{/customer/}">index页面</a>
-    <br/>
-    <a th:href="@{/customer/list}">查看列表</a>
-    <br/>
-    <a th:href="@{/logout}">退出</a>
+<body class="container">
+<br/>
+<br/>
+<br/>
+<h2>会员<span th:text="${customer.loginName}"></span>：信息</h2>
+    <div class="width:80%">
+        <table class="table table-hover">
+            <thead>
+            <tr>
+                <th>属性</th>
+                <th>内容</th>
+                <th>操作</th>
+            </tr>
+            </thead>
+            <tbody>
+           <tr>
+               <th>会员名称</th>
+               <th th:text="${customer.cusName}"></th>
+               <th>修改</th>
+           </tr>
+           <tr>
+               <th>会员登录名</th>
+               <th th:text="${customer.loginName}"></th>
+               <th>修改</th>
+           </tr>
+           <tr>
+               <th>会员性别</th>
+               <th th:text="${customer.sex}"></th>
+               <th>修改</th>
+           </tr>
+           <tr>
+               <th>会员电话</th>
+               <th th:text="${customer.telPhone}"></th>
+               <th>修改</th>
+           </tr>
+           <tr>
+               <th>会员地址</th>
+               <th th:text="${customer.address}"></th>
+               <th>修改</th>
+           </tr>
+           <tr>
+               <th>账户类型</th>
+               <th th:text="${customer.accountType}"></th>
+               <th>修改</th>
+           </tr>
+            </tbody>
+        </table>
+    </div>
 </body>
 </html>

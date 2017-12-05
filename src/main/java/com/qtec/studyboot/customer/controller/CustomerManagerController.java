@@ -76,11 +76,12 @@ public class CustomerManagerController {
     }
 
 
-    @RequestMapping(value = "/updateCus/{cusId}")
-    public Customer updateCus(HttpServletRequest request, Customer customer,@PathVariable Long cusId) {
+    @RequestMapping(value = "/updateCus/{cusId}",method = RequestMethod.GET)
+    public String updateCus(Model model,@PathVariable Long cusId) {
         logger.info("更新:"+cusId);
-
-        return customer;
+        Customer customer = customerService.getCustomerById(String.valueOf(cusId));
+        model.addAttribute("customer",customer);
+        return "/customer/person";
     }
 
     @ResponseBody
